@@ -7,9 +7,8 @@ script = ExtResource("1")
 player_path = NodePath("../PlayerWallace")
 stealth_system_path = NodePath("../../StealthSystem")
 
-[node name="Body" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-14, -10, 14, 0, -14, 10)
-color = Color(0.61, 0.11, 0.13, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
 
 [node name="PatrolPoints" type="Node2D" parent="."]
 

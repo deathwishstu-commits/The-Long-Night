@@ -6,3 +6,5 @@
 script = ExtResource("1")
 room_size = Vector2(350, 250)
 fill_color = Color(0.18, 0.11, 0.12, 0.75)
+left_door = true
+right_door = true

@@ -17,9 +17,9 @@ Recommended default: **Godot 4.x** for fast 2D iteration and lightweight pipelin
 
 ## Sprint 1 - Intro Graybox
 - `[x]` Build 7-room Deck A blockout.
-- `[ ]` Add collision and door transitions.
+- `[x]` Add collision and door transitions.
 - `[x]` Add objective tracker UI.
-- `[ ]` Add interactable terminals and one locked relay door.
+- `[x]` Add interactable terminals and one locked relay door.
 - `[ ]` Add checkpoint system (scene restart from room start).
 
 ## Sprint 2 - Core Mechanics
@@ -37,7 +37,7 @@ Recommended default: **Godot 4.x** for fast 2D iteration and lightweight pipelin
 - `[ ]` Add end-of-level Ari comm sequence and Deck B hook.
 
 ## Sprint 4 - Art and Audio Pass
-- `[ ]` Import first-pass tile set and sprite sheets.
+- `[x]` Import first-pass tile set and sprite sheets.
 - `[ ]` Add lighting pass: darkness, cones, alarm flashes.
 - `[ ]` Add VFX: scan pulse, glitch overlay, warning pulses.
 - `[ ]` Add ambience loop and combat/interaction SFX.

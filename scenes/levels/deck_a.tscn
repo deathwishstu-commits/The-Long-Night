@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/deck_a_controller.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/entities/player_wallace.tscn" id="2"]
@@ -12,6 +12,14 @@
 [ext_resource type="PackedScene" path="res://scenes/rooms/maintenance_bay.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://scenes/rooms/embryo_support_annex.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://scenes/rooms/blast_door_exit.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/entities/ari_npc.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://scenes/entities/relay_terminal.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://scenes/entities/blast_door_lock.tscn" id="15"]
+[ext_resource type="Script" path="res://scripts/systems/room_trigger.gd" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/entities/hybrid_child_npc.tscn" id="17"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(200, 120)
 
 [node name="DeckA" type="Node2D"]
 script = ExtResource("1")
@@ -25,30 +33,100 @@ script = ExtResource("3")
 position = Vector2(0, 0)
 
 [node name="MedicalCorridor" parent="Rooms" instance=ExtResource("7")]
-position = Vector2(320, 50)
+position = Vector2(300, 50)
 
 [node name="SecurityJunction" parent="Rooms" instance=ExtResource("8")]
-position = Vector2(760, 0)
+position = Vector2(720, 0)
 
 [node name="ReactorControl" parent="Rooms" instance=ExtResource("9")]
-position = Vector2(1060, 20)
+position = Vector2(980, 20)
 
 [node name="MaintenanceBay" parent="Rooms" instance=ExtResource("10")]
-position = Vector2(1420, 0)
+position = Vector2(1300, 0)
 
 [node name="EmbryoSupportAnnex" parent="Rooms" instance=ExtResource("11")]
-position = Vector2(1780, 40)
+position = Vector2(1650, 40)
 
 [node name="BlastDoorExit" parent="Rooms" instance=ExtResource("12")]
-position = Vector2(2060, 20)
+position = Vector2(1890, 20)
 
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="PlayerWallace" parent="Entities" instance=ExtResource("2")]
-position = Vector2(90, 100)
+position = Vector2(110, 110)
 
 [node name="SecurityDrone" parent="Entities" instance=ExtResource("4")]
-position = Vector2(860, 120)
+position = Vector2(820, 112)
+
+[node name="RelayTerminal" parent="Entities" instance=ExtResource("14")]
+position = Vector2(1140, 148)
+
+[node name="BlastDoorLock" parent="Entities" instance=ExtResource("15")]
+position = Vector2(1294, 126)
+
+[node name="AriNPC" parent="Entities" instance=ExtResource("13")]
+position = Vector2(1720, 118)
+
+[node name="HybridChildNPC" parent="Entities" instance=ExtResource("17")]
+position = Vector2(1800, 122)
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="TriggerStasis" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(150, 110)
+script = ExtResource("16")
+room_name = "Stasis Wake Chamber"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerStasis"]
+shape = SubResource("1")
+
+[node name="TriggerMedical" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(510, 110)
+script = ExtResource("16")
+room_name = "Medical Corridor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerMedical"]
+shape = SubResource("1")
+
+[node name="TriggerSecurity" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(850, 110)
+script = ExtResource("16")
+room_name = "Security Junction"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerSecurity"]
+shape = SubResource("1")
+
+[node name="TriggerReactor" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(1140, 150)
+script = ExtResource("16")
+room_name = "Reactor Control"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerReactor"]
+shape = SubResource("1")
+
+[node name="TriggerMaintenance" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(1475, 125)
+script = ExtResource("16")
+room_name = "Maintenance Bay"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerMaintenance"]
+shape = SubResource("1")
+
+[node name="TriggerEmbryo" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(1770, 130)
+script = ExtResource("16")
+room_name = "Embryo Support Annex"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerEmbryo"]
+shape = SubResource("1")
+
+[node name="TriggerExit" type="Area2D" parent="Triggers" groups=["room_trigger"]]
+position = Vector2(2000, 110)
+script = ExtResource("16")
+room_name = "Blast Door Exit"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/TriggerExit"]
+shape = SubResource("1")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

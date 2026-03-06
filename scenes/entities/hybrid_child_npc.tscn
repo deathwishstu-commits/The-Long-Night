@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/ari_npc.gd" id="1"]
+
+[node name="HybridChildNPC" type="Node2D"]
+script = ExtResource("1")
+sprite_path = "res://art/characters/hybrid_child_proto.png"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)

@@ -13,6 +13,7 @@ enum DroneState {
 @export var view_angle_degrees: float = 90.0
 @export var detection_rate: float = 40.0
 @export var chase_break_seconds: float = 2.0
+@export var sprite_path: String = "res://art/entities/security_drone_proto.png"
 
 var _state: DroneState = DroneState.PATROL
 var _target_index: int = 0
@@ -23,6 +24,7 @@ var _patrol_points: Array[Vector2] = []
 @onready var _stealth_system: Node = get_node_or_null(stealth_system_path)
 
 func _ready() -> void:
+	_load_sprite()
 	_collect_patrol_points()
 
 func _process(delta: float) -> void:
@@ -88,3 +90,16 @@ func _add_detection(delta: float) -> void:
 		noise_level = _player.call("get_noise_level")
 	if _stealth_system.has_method("add_detection"):
 		_stealth_system.call("add_detection", detection_rate * noise_level * delta)
+
+func _load_sprite() -> void:
+	var sprite := get_node_or_null("Sprite2D") as Sprite2D
+	if sprite == null:
+		return
+	var image := Image.new()
+	var load_status := image.load(sprite_path)
+	if load_status != OK:
+		push_warning("Failed to load drone sprite: %s" % sprite_path)
+		return
+	var texture := ImageTexture.create_from_image(image)
+	sprite.texture = texture
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
