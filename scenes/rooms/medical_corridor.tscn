@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/graybox_room.gd" id="1"]
+
+[node name="MedicalCorridor" type="Node2D"]
+script = ExtResource("1")
+room_size = Vector2(420, 120)
+fill_color = Color(0.1, 0.16, 0.2, 0.75)

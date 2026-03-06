@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ai/patrol_drone.gd" id="1"]
+
+[node name="SecurityDrone" type="Node2D"]
+script = ExtResource("1")
+player_path = NodePath("../PlayerWallace")
+stealth_system_path = NodePath("../../StealthSystem")
+
+[node name="Body" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-14, -10, 14, 0, -14, 10)
+color = Color(0.61, 0.11, 0.13, 1)
+
+[node name="PatrolPoints" type="Node2D" parent="."]
+
+[node name="A" type="Marker2D" parent="PatrolPoints"]
+position = Vector2(-80, -24)
+
+[node name="B" type="Marker2D" parent="PatrolPoints"]
+position = Vector2(80, 24)
